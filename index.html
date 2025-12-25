@@ -8,41 +8,56 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
 
+/* BODY – allow scroll */
 body{
-  height:100vh;
+  min-height:100vh;
   background:linear-gradient(135deg,#ff758c,#ff7eb3);
   display:flex;
   justify-content:center;
   align-items:center;
-  overflow:hidden;
+  padding:20px 0;
 }
 
-/* Card */
+/* CARD */
 .card{
   background:#fff;
-  width:90%;
+  width:100%;
   max-width:430px;
-  padding:35px;
+  padding:30px;
   border-radius:22px;
   text-align:center;
   box-shadow:0 20px 50px rgba(0,0,0,.25);
-  animation:slideIn 1.3s ease;
+  animation:slideIn 1.2s ease;
 }
 
 @keyframes slideIn{
-  from{opacity:0;transform:translateY(50px);}
+  from{opacity:0;transform:translateY(40px);}
   to{opacity:1;transform:translateY(0);}
 }
 
-h1{color:#ff4f81;font-size:2.2em;}
-p{margin-top:15px;color:#555;font-size:1.05em;line-height:1.6;}
+h1{
+  color:#ff4f81;
+  font-size:2.1em;
+}
 
-/* Buttons */
+p{
+  margin-top:14px;
+  color:#555;
+  font-size:1em;
+  line-height:1.6;
+}
+
+/* BUTTONS */
 button{
   margin-top:22px;
-  padding:12px 35px;
+  padding:12px 32px;
   border:none;
   border-radius:30px;
   background:#ff4f81;
@@ -52,7 +67,10 @@ button{
   transition:.3s;
 }
 
-button:hover{transform:scale(1.08);background:#e63b6f;}
+button:hover{
+  transform:scale(1.05);
+  background:#e63b6f;
+}
 
 .back-btn{
   background:#777;
@@ -61,16 +79,19 @@ button:hover{transform:scale(1.08);background:#e63b6f;}
   background:#555;
 }
 
-/* Surprise Section */
+/* SURPRISE SECTION */
 .surprise{
   display:none;
   margin-top:25px;
   animation:fadeIn 1s ease;
 }
 
-@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes fadeIn{
+  from{opacity:0;}
+  to{opacity:1;}
+}
 
-/* Images same size */
+/* IMAGES – SAME SIZE, NO CROP */
 .images{
   display:grid;
   grid-template-columns:repeat(2,1fr);
@@ -81,8 +102,9 @@ button:hover{transform:scale(1.08);background:#e63b6f;}
 .images img{
   width:100%;
   height:130px;
-  object-fit: contain;
-background-color: #f3f3f3;
+  object-fit:contain;
+  background:#f3f3f3;
+  padding:6px;
   border-radius:14px;
   transform:scale(0);
   animation:pop .8s ease forwards;
@@ -92,79 +114,88 @@ background-color: #f3f3f3;
 .images img:nth-child(3){animation-delay:.6s;}
 .images img:nth-child(4){animation-delay:.9s;}
 
-@keyframes pop{from{transform:scale(0);}to{transform:scale(1);}}
-
-/* Final Note */
-.final-note{
-  margin-top:25px;
-  padding:15px;
-  background:#fff0f5;
-  border-radius:15px;
-  animation:fadeIn 1.5s ease;
+@keyframes pop{
+  from{transform:scale(0);}
+  to{transform:scale(1);}
 }
 
-/* Hearts */
+/* FINAL NOTE */
+.final-note{
+  margin-top:22px;
+  padding:15px;
+  background:#fff0f5;
+  border-radius:14px;
+  font-size:.95em;
+}
+
+/* FLOATING HEARTS */
 .heart{
-  position:absolute;
+  position:fixed;
+  bottom:-20px;
   color:#fff;
-  font-size:22px;
+  font-size:20px;
   animation:floatUp linear infinite;
   opacity:.8;
+  pointer-events:none;
 }
 
 @keyframes floatUp{
-  0%{transform:translateY(100vh);}
-  100%{transform:translateY(-10vh);opacity:0;}
+  0%{transform:translateY(0);}
+  100%{transform:translateY(-110vh);opacity:0;}
 }
 
-/* Sparkles */
+/* SPARKLES */
 .sparkle{
-  position:absolute;
+  position:fixed;
   width:6px;
   height:6px;
   background:#fff;
   border-radius:50%;
   animation:sparkle 2s ease-out forwards;
+  pointer-events:none;
 }
 
 @keyframes sparkle{
   from{transform:scale(0);opacity:1;}
   to{transform:scale(3);opacity:0;}
 }
+
+/* MOBILE OPTIMIZATION */
+@media(max-width:480px){
+  h1{font-size:1.8em;}
+  .images img{height:110px;}
+  button{width:100%;}
+}
 </style>
 </head>
 
 <body>
 
-<div class="card" id="mainCard">
+<div class="card">
   <h1>🎂 Happy Birthday</h1>
-   <p class="name">Ashmithaa 💖</p>
+     <p class="name">Ashmithaa 💖</p>
   <p>
-    Today is all about celebrating you 💖  
-    May your life be filled with love, peace, and happiness ✨
+    Wishing you a day filled with smiles, good vibes,  
+    and moments that make you feel happy 😊
   </p>
 
   <button onclick="showSurprise()">Click for Surprise 🎁</button>
 
   <div class="surprise" id="surprise">
-    <p>💫 Some beautiful moments just for you 💫</p>
+    <p>✨ A few moments just for you ✨</p>
 
     <div class="images">
       <img src="https://res.cloudinary.com/dkcmqql9i/image/upload/v1766696567/IMG-20251226-WA0004_if9t6f.jpg">
       <img src="https://res.cloudinary.com/dkcmqql9i/image/upload/v1766696568/IMG-20251115-WA0057_lmgakx.jpg">
     </div>
 
-    <!-- FINAL NOTE -->
     <div class="final-note">
-      <p>
-        🌸Birthdays are a reminder of how special every year is.
+      🌸Birthdays are a reminder of how special every year is.
 I hope this one treats you kindly and fills your days
 with laughter, success, and peace.
 Enjoy your day to the fullest 💕
-      </p>
     </div>
 
-    <!-- BACK BUTTON -->
     <button class="back-btn" onclick="goBack()">⬅ Back</button>
   </div>
 </div>
@@ -174,16 +205,17 @@ function showSurprise(){
   document.getElementById("surprise").style.display="block";
   hearts();
   sparkles();
+  setTimeout(()=>window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'}),300);
 }
 
-/* Back button */
 function goBack(){
   document.getElementById("surprise").style.display="none";
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 
-/* Hearts */
+/* HEARTS */
 function hearts(){
-  for(let i=0;i<25;i++){
+  for(let i=0;i<20;i++){
     let h=document.createElement("div");
     h.className="heart";
     h.innerHTML="❤";
@@ -194,9 +226,9 @@ function hearts(){
   }
 }
 
-/* Sparkles */
+/* SPARKLES */
 function sparkles(){
-  for(let i=0;i<30;i++){
+  for(let i=0;i<25;i++){
     let s=document.createElement("div");
     s.className="sparkle";
     s.style.left=Math.random()*100+"vw";
